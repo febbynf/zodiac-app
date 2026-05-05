@@ -370,7 +370,7 @@ export default function Home() {
           {/* 🔥 FRONT */}
           <div className="absolute w-full h-full backface-hidden flex flex-col justify-between items-center p-6 overflow-hidden"
             style={{
-              backgroundImage: "url('/card.png')",
+              backgroundImage: "url('/Card.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
