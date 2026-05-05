@@ -407,7 +407,7 @@ export default function Home() {
                       <img
                         src={`/${selected}.png`}
                         alt={selected}
-                        className="pixel w-[80%] max-w-[320px] object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]"
+                        className="w-[120px] sm:w-[150px] md:w-[180px] object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]"
                       />
                       <p className="text-2xl text-yellow-300 tracking-wide">
                         {selected.charAt(0).toUpperCase() + selected.slice(1)}
