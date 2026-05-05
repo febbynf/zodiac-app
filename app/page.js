@@ -345,6 +345,24 @@ export default function Home() {
     );
   }, []);
 
+  const [radius, setRadius] = useState(150);
+
+  useEffect(() => {
+    const updateRadius = () => {
+      if (window.innerWidth < 480) {
+        setRadius(140); // HP kecil
+      } else if (window.innerWidth < 768) {
+        setRadius(160); // tablet
+      } else {
+        setRadius(185); // desktop
+      }
+    };
+
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
+
   return (
     <main className={`relative min-h-screen bg-black text-white flex overflow-hidden flex-col items-center justify-center ${pixel.className}`}>
       <img
@@ -376,14 +394,13 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
             }}>
 
-            <h1 className="text-2xl font-semibold py-3">
+            <h1 className="text-lg md:text-2xl font-semibold py-2 md:py-3 text-center">
               Today’s Zodiac Message
             </h1>
 
             {/* WHEEL */}
             <div className="flex-1 flex items-center justify-center w-full">
-              <div className="relative w-[420px] h-[420px]">
-
+              <div className="relative w-[85vw] max-w-[420px] aspect-square">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-yellow-400 text-lg text-center float overflow-hidden">
                   {selected ? (
                     <div className="flex flex-col items-center gap-0.5">
@@ -401,7 +418,7 @@ export default function Home() {
 
                 {/* ICON WHEEL */}
                 {!showCard && zodiacList.map((z, i) => {
-                  const pos = getPosition(i, zodiacList.length, 185);
+                  const pos = getPosition(i, zodiacList.length, radius);
 
                   return (
                     <button
@@ -418,7 +435,7 @@ export default function Home() {
                       <img
                         src={zodiacIcons[z]}
                         alt={z}
-                        className="w-6 h-6 object-contain"
+                        className="w-5 h-5 md:w-6 md:h-6"
                       />
                     </button>
                   );
@@ -429,7 +446,7 @@ export default function Home() {
 
             <button
               onClick={handleGenerate}
-              className="border border-[#b7b9a5] px-5 py-4 rounded-full">
+              className="border border-[#b7b9a5] px-4 py-2 md:px-5 md:py-4 text-sm md:text-base rounded-full">
               see today's reading
             </button>
 
@@ -460,7 +477,7 @@ export default function Home() {
 
             <button
               onClick={handleBack}
-              className="border border-white px-5 py-4 rounded-full"
+              className="border border-white x-4 py-2 md:px-5 md:py-4 text-sm md:text-base rounded-full"
             >
               ← back
             </button>
