@@ -403,17 +403,20 @@ export default function Home() {
               <div className="relative w-[85vw] max-w-[420px] aspect-square">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-yellow-400 text-lg text-center float overflow-hidden">
                   {selected ? (
-                    <div className="flex flex-col items-center gap-0.5">
+                    <div className="flex flex-col items-center justify-center h-[140px] sm:h-[180px] md:h-[220px]">
                       <img
                         src={`/${selected}.png`}
                         alt={selected}
                         className="w-[120px] sm:w-[150px] md:w-[180px] object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]"
                       />
-                      <p className="text-2xl text-yellow-300 tracking-wide">
-                        {selected.charAt(0).toUpperCase() + selected.slice(1)}
+                      <p className="text-sm sm:text-lg md:text-2xl text-yellow-300 tracking-wide mt-1">
+                        {capitalize(selected)}
                       </p>
+
                     </div>
-                  ) : "Pick your zodiac"}
+                  ) : (
+                    <p className="text-sm sm:text-base md:text-lg">Pick your zodiac</p>
+                  )}
                 </div>
 
                 {/* ICON WHEEL */}
